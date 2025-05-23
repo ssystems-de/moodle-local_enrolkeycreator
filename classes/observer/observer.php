@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  2025 Your Name <your.email@example.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class course_events {
+class observer {
 
     /**
      * Observer for enrol_instance_created event

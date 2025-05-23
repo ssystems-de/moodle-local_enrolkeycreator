@@ -18,7 +18,7 @@
  * Event observers for local_enrolkeycreator.
  *
  * @package    local_enrolkeycreator
- * @copyright  2025 Your Name <your.email@example.com>
+ * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

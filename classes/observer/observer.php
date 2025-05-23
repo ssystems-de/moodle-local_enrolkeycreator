@@ -18,7 +18,7 @@
  * Event observer for enrolment events.
  *
  * @package    local_enrolkeycreator
- * @copyright  2025 Your Name <your.email@example.com>
+ * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * Event observer class for enrolment events
  *
  * @package    local_enrolkeycreator
- * @copyright  2025 Your Name <your.email@example.com>
+ * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class observer {

@@ -18,14 +18,15 @@
  * Version information
  *
  * @package    local_enrolkeycreator
- * @copyright  2023 Your Name <your.email@example.com>
+ * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2025052200;      // Version im Format YYYYMMDDXX
-$plugin->requires  = 2022112800;      // Benötigt Moodle 4.1 oder höher
-$plugin->component = 'local_enrolkeycreator'; // Name des Plugins
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->release   = 'v0.1';
+$plugin->version   = 2024100700;      // Version format: YYYYMMDDXX
+$plugin->requires  = 2024100700;      // Requires Moodle 4.5
+$plugin->component = 'local_enrolkeycreator';
+$plugin->maturity  = MATURITY_STABLE;
+$plugin->release   = 'v4.5-r1';
+$plugin->supported = [405, 405];      // Supports Moodle 4.5 only

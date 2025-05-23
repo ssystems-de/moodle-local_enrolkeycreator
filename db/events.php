@@ -26,9 +26,9 @@ defined('MOODLE_INTERNAL') || die();
 
 $observers = [
     [
-        'eventname'   => '\enrol\event\instance_created',
+        'eventname'   => '\core\event\enrol_instance_created',
         'callback'    => '\local_enrolkeycreator\observer\course_events::enrol_instance_created',
-        'priority'    => 9999, // Hohe Priorität für schnelle Ausführung
-        'internal'    => false // Observer wird auch zwischen Moodle-Requests ausgeführt
+        'priority'    => 9999, // High priority for fast execution
+        'internal'    => false // Observer runs between Moodle requests
     ],
 ];

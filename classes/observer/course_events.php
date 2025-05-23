@@ -36,10 +36,10 @@ defined('MOODLE_INTERNAL') || die();
 class course_events {
 
     /**
-     * Observer für das enrol_instance_created Event
+     * Observer for enrol_instance_created event
      *
-     * @param object $event Das Event-Objekt
-     * @return bool Immer true
+     * @param object $event Event object
+     * @return bool Always true
      */
     public static function enrol_instance_created($event) {
         global $DB, $CFG;
@@ -49,7 +49,7 @@ class course_events {
         $enrol = $DB->get_record('enrol', ['id' => $enrolid]);
 
         if (!$enrol || $enrol->enrol !== 'self') {
-            // Wir bearbeiten nur Self-Enrolment-Instanzen
+            // We only process self-enrollment instances
             return true;
         }
 
@@ -60,30 +60,21 @@ class course_events {
             return true;
         }
 
-        // Protokollierung für Debugging-Zwecke
-        if (function_exists('mtrace')) {
-            mtrace('Self-Enrolment-Instanz erstellt für Kurs: ' . $course->fullname . ' (ID: ' . $courseid . ')');
-        }
-
-        // Generieren eines zufälligen Einschreibeschlüssels
+        // Generate a random enrollment key
         $enrolkey = self::generate_random_key();
 
-        // Aktualisieren der enrol-Instanz mit dem neuen Schlüssel
+        // Update the enrol instance with the new key
         $enrol->password = $enrolkey;
         $DB->update_record('enrol', $enrol);
-
-        if (function_exists('mtrace')) {
-            mtrace('Einschreibeschlüssel generiert: ' . $enrolkey);
-        }
 
         return true;
     }
 
     /**
-     * Generiert einen zufälligen Einschreibeschlüssel
+     * Generates a random enrollment key
      *
-     * @param int $length Länge des Schlüssels
-     * @return string Der generierte Schlüssel
+     * @param int $length Length of the key
+     * @return string The generated key
      */
     private static function generate_random_key($length = 8) {
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

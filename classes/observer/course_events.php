@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Event observer for course events.
+ * Event observer for enrolment events.
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Your Name <your.email@example.com>
@@ -27,7 +27,7 @@ namespace local_enrolkeycreator\observer;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Event observer class for course events
+ * Event observer class for enrolment events
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Your Name <your.email@example.com>
@@ -36,15 +36,24 @@ defined('MOODLE_INTERNAL') || die();
 class course_events {
 
     /**
-     * Observer für das course_created Event
+     * Observer für das enrol_instance_created Event
      *
-     * @param \core\event\course_created $event Das Event-Objekt
+     * @param object $event Das Event-Objekt
      * @return bool Immer true
      */
-    public static function course_created(\core\event\course_created $event) {
+    public static function enrol_instance_created($event) {
         global $DB, $CFG;
+        require_once($CFG->dirroot . '/enrol/locallib.php');
 
-        $courseid = $event->objectid;
+        $enrolid = $event->objectid;
+        $enrol = $DB->get_record('enrol', ['id' => $enrolid]);
+
+        if (!$enrol || $enrol->enrol !== 'self') {
+            // Wir bearbeiten nur Self-Enrolment-Instanzen
+            return true;
+        }
+
+        $courseid = $enrol->courseid;
         $course = $DB->get_record('course', ['id' => $courseid]);
 
         if (!$course) {
@@ -52,38 +61,19 @@ class course_events {
         }
 
         // Protokollierung für Debugging-Zwecke
-        mtrace('Kurs wurde erstellt: ' . $course->fullname . ' (ID: ' . $courseid . ')');
+        if (function_exists('mtrace')) {
+            mtrace('Self-Enrolment-Instanz erstellt für Kurs: ' . $course->fullname . ' (ID: ' . $courseid . ')');
+        }
 
-        // Hier könnten Sie einen Einschreibeschlüssel für diesen Kurs generieren
-        // Beispiel für einen zufälligen Schlüssel
+        // Generieren eines zufälligen Einschreibeschlüssels
         $enrolkey = self::generate_random_key();
 
-        // Zugriff auf die "enrol"-Tabelle, um den Einschreibeschlüssel zu setzen
-        // Prüfen, ob bereits eine self-enrolment-Instanz existiert
-        $enrol = $DB->get_record('enrol', ['courseid' => $courseid, 'enrol' => 'self']);
+        // Aktualisieren der enrol-Instanz mit dem neuen Schlüssel
+        $enrol->password = $enrolkey;
+        $DB->update_record('enrol', $enrol);
 
-        if ($enrol) {
-            // Aktualisieren der vorhandenen Instanz
-            $enrol->password = $enrolkey;
-            $DB->update_record('enrol', $enrol);
-            mtrace('Einschreibeschlüssel aktualisiert: ' . $enrolkey);
-        } else {
-            // Erstellen einer neuen self-enrolment-Instanz
-            $selfplugin = enrol_get_plugin('self');
-            if ($selfplugin) {
-                $instanceid = $selfplugin->add_instance($course, [
-                    'status' => ENROL_INSTANCE_ENABLED,
-                    'name' => 'Selbsteinschreibung',
-                    'password' => $enrolkey,
-                    'customint1' => 0, // Unbeschränkte Plätze
-                    'customint2' => 0, // Kein Begrüßungstext
-                    'customint3' => 0, // Max. Einschreibedauer (0 = unbegrenzt)
-                    'customint4' => 1, // Startdatum aktivieren
-                    'customint5' => 0, // Enddatum deaktivieren
-                    'customint6' => 1, // Neue Einschreibungen erlauben
-                ]);
-                mtrace('Neue Self-Enrolment-Instanz erstellt mit Schlüssel: ' . $enrolkey);
-            }
+        if (function_exists('mtrace')) {
+            mtrace('Einschreibeschlüssel generiert: ' . $enrolkey);
         }
 
         return true;

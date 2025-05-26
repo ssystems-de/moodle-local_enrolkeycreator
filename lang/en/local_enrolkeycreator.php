@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Automatic enrollment key creator';
-$string['pluginsettings'] = 'Enrollment key creator settings';
 $string['enabled'] = 'Enable automatic enrollment key creation';
 $string['enabled_desc'] = 'When enabled, the plugin will automatically generate and set an enrollment key when a new self-enrollment instance is created. Note: This setting has no effect if the Moodle core setting "enrol_self | requirepassword" is enabled, as Moodle core will already handle password generation in that case.';
+$string['pluginname'] = 'Automatic enrollment key creator';
+$string['pluginsettings'] = 'Enrollment key creator settings';

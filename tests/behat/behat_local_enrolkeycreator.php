@@ -23,7 +23,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// NOTE: no MOODLE_INTERNAL check here, this file may be required by behat before including /config.php.
 require_once(__DIR__ . '/../../../../lib/behat/behat_base.php');
 
 /**
@@ -55,22 +54,22 @@ class behat_local_enrolkeycreator extends behat_base {
     public function self_enrollment_method_should_have_key($coursename) {
         global $DB;
 
-        // Get the course ID
-        $courseid = $DB->get_field('course', 'id', array('fullname' => $coursename));
+        // Get the course ID.
+        $courseid = $DB->get_field('course', 'id', ['fullname' => $coursename]);
         if (!$courseid) {
             throw new Exception("Course '{$coursename}' does not exist");
         }
 
-        // Get the self enrollment method
-        $enrolid = $DB->get_field('enrol', 'id', array('courseid' => $courseid, 'enrol' => 'self'));
+        // Get the self enrollment method.
+        $enrolid = $DB->get_field('enrol', 'id', ['courseid' => $courseid, 'enrol' => 'self']);
         if (!$enrolid) {
             throw new Exception("Self enrollment method for course '{$coursename}' does not exist");
         }
 
-        // Get the enrollment method record
-        $enrol = $DB->get_record('enrol', array('id' => $enrolid));
+        // Get the enrollment method record.
+        $enrol = $DB->get_record('enrol', ['id' => $enrolid]);
 
-        // Check if the password is set
+        // Check if the password is set.
         if (empty($enrol->password)) {
             throw new Exception("Self enrollment method for course '{$coursename}' does not have an enrollment key set");
         }
@@ -85,22 +84,22 @@ class behat_local_enrolkeycreator extends behat_base {
     public function self_enrollment_method_should_not_have_key($coursename) {
         global $DB;
 
-        // Get the course ID
-        $courseid = $DB->get_field('course', 'id', array('fullname' => $coursename));
+        // Get the course ID.
+        $courseid = $DB->get_field('course', 'id', ['fullname' => $coursename]);
         if (!$courseid) {
             throw new Exception("Course '{$coursename}' does not exist");
         }
 
-        // Get the self enrollment method
-        $enrolid = $DB->get_field('enrol', 'id', array('courseid' => $courseid, 'enrol' => 'self'));
+        // Get the self enrollment method.
+        $enrolid = $DB->get_field('enrol', 'id', ['courseid' => $courseid, 'enrol' => 'self']);
         if (!$enrolid) {
             throw new Exception("Self enrollment method for course '{$coursename}' does not exist");
         }
 
-        // Get the enrollment method record
-        $enrol = $DB->get_record('enrol', array('id' => $enrolid));
+        // Get the enrollment method record.
+        $enrol = $DB->get_record('enrol', ['id' => $enrolid]);
 
-        // Check if the password is not set
+        // Check if the password is not set.
         if (!empty($enrol->password)) {
             throw new Exception("Self enrollment method for course '{$coursename}' has an enrollment key set but it shouldn't");
         }

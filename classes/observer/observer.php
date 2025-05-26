@@ -44,12 +44,31 @@ class observer {
     public static function enrol_instance_created($event) {
         global $DB, $CFG;
         require_once($CFG->dirroot . '/enrol/locallib.php');
+        require_once($CFG->dirroot . '/lib/enrollib.php'); // For enrol_get_plugin function
+
+        // Check if the plugin is enabled in settings
+        $enabled = get_config('local_enrolkeycreator', 'enabled');
+        if (empty($enabled)) {
+            // Plugin is disabled, do nothing
+            return true;
+        }
 
         $enrolid = $event->objectid;
         $enrol = $DB->get_record('enrol', ['id' => $enrolid]);
 
         if (!$enrol || $enrol->enrol !== 'self') {
             // We only process self-enrollment instances
+            return true;
+        }
+
+        // Check if requirepassword setting is enabled in Moodle
+        if (!empty($CFG->enrol_self_requirepassword)) {
+            // If requirepassword is enabled, a password has already been set by core
+            return true;
+        }
+
+        // Check if a password is already set
+        if (!empty($enrol->password)) {
             return true;
         }
 
@@ -60,31 +79,14 @@ class observer {
             return true;
         }
 
-        // Generate a random enrollment key
-        $enrolkey = self::generate_random_key();
+        // Use the standard Moodle function to generate a random enrollment key
+        // generate_password() is a core Moodle function that generates a secure password
+        $enrolkey = generate_password();
 
         // Update the enrol instance with the new key
         $enrol->password = $enrolkey;
         $DB->update_record('enrol', $enrol);
 
         return true;
-    }
-
-    /**
-     * Generates a random enrollment key
-     *
-     * @param int $length Length of the key
-     * @return string The generated key
-     */
-    private static function generate_random_key($length = 8) {
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $key = '';
-        $max = strlen($chars) - 1;
-
-        for ($i = 0; $i < $length; $i++) {
-            $key .= $chars[random_int(0, $max)];
-        }
-
-        return $key;
     }
 }

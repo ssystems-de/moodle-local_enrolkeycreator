@@ -113,18 +113,18 @@ class behat_local_enrolkeycreator extends behat_base {
      * @param string $enrolmentmethod The enrolment method name
      * @param TableNode $table The data for the enrolment method's fields
      */
-    public function iAddEnrolmentMethodWith($enrolmentmethod, TableNode $table) {
+    public function iaddenrolmentmethodwith($enrolmentmethod, TableNode $table) {
         // Click on the "Add method" dropdown.
-        $this->execute('behat_general::i_click_on', array("Add method", "button"));
+        $this->execute('behat_general::i_click_on', ["Add method", "button"]);
 
         // Find the enrolment method in the dropdown and click on it.
         $xpath = "//div[contains(@class,'dropdown-menu')]//a[contains(text(),'{$enrolmentmethod}')]";
-        $this->execute('behat_general::i_click_on', array($xpath, "xpath_element"));
+        $this->execute('behat_general::i_click_on', [$xpath, "xpath_element"]);
 
         // Fill in the form fields.
-        $this->execute('behat_forms::i_set_the_following_fields_to_these_values', array($table));
+        $this->execute('behat_forms::i_set_the_following_fields_to_these_values', [$table]);
 
         // Add the enrolment method.
-        $this->execute('behat_forms::press_button', array('Add method'));
+        $this->execute('behat_forms::press_button', ['Add method']);
     }
 }

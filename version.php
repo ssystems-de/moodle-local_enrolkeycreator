@@ -24,9 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2024100700;      // Version format: YYYYMMDDXX
-$plugin->requires  = 2024100700;      // Requires Moodle 4.5
+$plugin->version   = 2024100700;
+$plugin->requires  = 2024100700;
 $plugin->component = 'local_enrolkeycreator';
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = 'v4.5-r1';
-$plugin->supported = [405, 405];      // Supports Moodle 4.5 only
+$plugin->supported = [405, 405];

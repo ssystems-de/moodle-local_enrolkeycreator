@@ -27,6 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 $observers = [
     [
         'eventname'   => '\core\event\enrol_instance_created',
-        'callback'    => '\local_enrolkeycreator\observer\observer::enrol_instance_created'
+        'callback'    => '\local_enrolkeycreator\observer\observer::enrol_instance_created',
     ],
 ];

@@ -24,6 +24,7 @@
  */
 
 require_once(__DIR__ . '/../../../../lib/behat/behat_base.php');
+use Behat\Gherkin\Node\TableNode;
 
 /**
  * Steps definitions for enrollment key creator plugin.
@@ -103,5 +104,27 @@ class behat_local_enrolkeycreator extends behat_base {
         if (!empty($enrol->password)) {
             throw new Exception("Self enrollment method for course '{$coursename}' has an enrollment key set but it shouldn't");
         }
+    }
+
+    /**
+     * Adds an enrolment method to the current course with the specified values.
+     *
+     * @Given /^I add "(?P<enrolment_method_name_string>(?:[^"]|\\")*)" enrolment method with:$/
+     * @param string $enrolmentmethod The enrolment method name
+     * @param TableNode $table The data for the enrolment method's fields
+     */
+    public function iAddEnrolmentMethodWith($enrolmentmethod, TableNode $table) {
+        // Click on the "Add method" dropdown.
+        $this->execute('behat_general::i_click_on', array("Add method", "button"));
+
+        // Find the enrolment method in the dropdown and click on it.
+        $xpath = "//div[contains(@class,'dropdown-menu')]//a[contains(text(),'{$enrolmentmethod}')]";
+        $this->execute('behat_general::i_click_on', array($xpath, "xpath_element"));
+
+        // Fill in the form fields.
+        $this->execute('behat_forms::i_set_the_following_fields_to_these_values', array($table));
+
+        // Add the enrolment method.
+        $this->execute('behat_forms::press_button', array('Add method'));
     }
 }

@@ -17,26 +17,23 @@ Feature: Automatic enrollment key creation
     And I log in as "admin"
     And I am on site homepage
 
-  @javascript
-  Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
-    Given enrollment key creator is "enabled"
-    And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
-    And I am on "Course 1" course homepage
-    And I click on "Participants" "link" in the ".secondary-navigation" "css_element"
-    And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
-    And I add "Self enrolment" enrolment method with:
-      | Custom instance name | Test self enrollment |
-    Then self enrollment method for course "Course 1" should have an enrollment key
+@javascript
+Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
+  Given the "Self enrolment" enrolment plugin is enabled
+  And I am on the "Course 001" "Enrolled users" page
+  And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
+  And I add "Self enrolment" enrolment method with:
+    | Custom instance name | Test self enrollment |
+  And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
+  Then the field "Enrolment key" should not be empty
 
-  @javascript
-  Scenario: Self enrollment method should not get an enrollment key when plugin is disabled
-    Given enrollment key creator is "disabled"
-    And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
-    And I click on "Disable" "link" in the "Self enrolment" "table_row"
-    And I am on "Course 1" course homepage
-    And I click on "Participants" "link" in the ".secondary-navigation" "css_element"
-    And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
-    And I add "Self enrolment" enrolment method with:
-      | Custom instance name | Test self enrollment |
-      | Enrolment key | |
-    Then self enrollment method for course "Course 1" should not have an enrollment key
+@javascript
+Scenario: Self enrollment method should not get an enrollment key when plugin is disabled
+  Given the "Self enrolment" enrolment plugin is enabled
+  And I am on the "Course 001" "Enrolled users" page
+  And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
+  And I add "Self enrolment" enrolment method with:
+    | Custom instance name | Test self enrollment |
+    | Enrolment key        |                      |
+  And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
+  Then the field "Enrolment key" should be empty

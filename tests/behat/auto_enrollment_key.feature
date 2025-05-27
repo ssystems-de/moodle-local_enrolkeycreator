@@ -36,7 +36,6 @@ Feature: Automatic enrollment key creation
       | Course full name  | Course 2             |
       | Course short name | C2                   |
       | Course category   | Category 1           |
-      | Course format     | Topics format        |
     And I press "Save and display"
     And I am on the "Course 2" "enrolment methods" page
     And I click on "Edit" "link" in the "Self enrolment (Student)" "table_row"

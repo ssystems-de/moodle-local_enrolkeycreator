@@ -21,7 +21,7 @@ Feature: Automatic enrollment key creation
   Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
     Given I log in as "admin"
     And I am on the "Course 1" "Enrolled users" page
-    And I follow "Enrolment methods"
+    And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
     And I add "Self enrolment" enrolment method with:
       | Custom instance name | Test self enrollment |
     And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
@@ -33,7 +33,7 @@ Feature: Automatic enrollment key creation
     And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
     And I click on "Disable" "link" in the "Self enrolment" "table_row"
     And I am on the "Course 1" "Enrolled users" page
-    And I follow "Enrolment methods"
+    And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
     And I add "Self enrolment" enrolment method with:
       | Custom instance name | Test self enrollment |
       | Enrolment key        |                      |

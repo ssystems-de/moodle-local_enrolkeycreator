@@ -31,6 +31,13 @@ Feature: Automatic enrollment key creation
     And I set the following fields to these values:
       | Enable automatic enrollment key creation | No |
     And I press "Save changes"
-    And I am on the "Course 1" "enrolment methods" page
+      And I navigate to "Courses > Add a new course" in site administration
+    And I set the following fields to these values:
+      | Course full name  | Course 2             |
+      | Course short name | C2                   |
+      | Course category   | Miscellaneous        |
+      | Course format     | Topics format        |
+    And I press "Save and display"
+    And I am on the "Course 2" "enrolment methods" page
     And I click on "Edit" "link" in the "Self enrolment (Student)" "table_row"
     Then the field "Enrolment key" matches value ""

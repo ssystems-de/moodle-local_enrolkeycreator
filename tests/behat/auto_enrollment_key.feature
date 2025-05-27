@@ -22,7 +22,7 @@ Feature: Automatic enrollment key creation
     Given enrollment key creator is "enabled"
     And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
     And I am on "Course 1" course homepage
-    And I navigate to "Users > Enrolment methods" in current page administration
+    And I navigate to "Participants > Enrolment methods" in current page administration
     And I add "Self enrolment" enrolment method with:
       | Custom instance name | Test self enrollment |
     Then self enrollment method for course "Course 1" should have an enrollment key
@@ -33,7 +33,7 @@ Feature: Automatic enrollment key creation
     And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
     And I click on "Disable" "link" in the "Self enrolment" "table_row"
     And I am on "Course 1" course homepage
-    And I navigate to "Users > Enrolment methods" in current page administration
+    And I navigate to "Participants > Enrolment methods" in current page administration
     And I add "Self enrolment" enrolment method with:
       | Custom instance name | Test self enrollment |
       | Enrolment key | |

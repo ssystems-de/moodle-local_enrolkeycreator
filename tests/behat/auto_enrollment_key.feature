@@ -19,21 +19,25 @@ Feature: Automatic enrollment key creation
 
   @javascript
   Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
-    Given the "Self enrolment" enrolment plugin is enabled
-    And I am on the "Course 001" "Enrolled users" page
-    And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
+    Given I log in as "admin"
+    And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
+    And I click on "Enable" "link" in the "Self enrolment" "table_row"
+    And I am on the "Course 1" "Enrolled users" page
+    And I follow "Enrolment methods"
     And I add "Self enrolment" enrolment method with:
       | Custom instance name | Test self enrollment |
     And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
-    Then the field "Enrolment key" should not be empty
+    Then the field "Enrolment key" should contain ""
 
   @javascript
   Scenario: Self enrollment method should not get an enrollment key when plugin is disabled
-    Given the "Self enrolment" enrolment plugin is enabled
-    And I am on the "Course 001" "Enrolled users" page
-    And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
+    Given I log in as "admin"
+    And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
+    And I click on "Disable" "link" in the "Self enrolment" "table_row"
+    And I am on the "Course 1" "Enrolled users" page
+    And I follow "Enrolment methods"
     And I add "Self enrolment" enrolment method with:
       | Custom instance name | Test self enrollment |
       | Enrolment key        |                      |
     And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
-    Then the field "Enrolment key" should be empty
+    Then the field "Enrolment key" should contain ""

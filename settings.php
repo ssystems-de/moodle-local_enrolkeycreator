@@ -36,6 +36,6 @@ if ($hassiteconfig) {
     $name = 'local_enrolkeycreator/enabled';
     $title = new lang_string('enabled', 'local_enrolkeycreator');
     $description = new lang_string('enabled_desc', 'local_enrolkeycreator');
-    $default = 1; // Enabled by default.
+    $default = 0;
     $settings->add(new admin_setting_configcheckbox($name, $title, $description, $default));
 }

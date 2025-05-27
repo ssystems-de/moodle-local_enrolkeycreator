@@ -27,7 +27,7 @@ Feature: Automatic enrollment key creation
     And I add "Self enrolment" enrolment method with:
       | Custom instance name | Test self enrollment |
     And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
-    Then the field "Field name" matches "~."
+    Then the field "Enrolment key" does not match value ""
 
   @javascript
   Scenario: Self enrollment method should not get an enrollment key when plugin is disabled

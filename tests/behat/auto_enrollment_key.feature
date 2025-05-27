@@ -17,7 +17,7 @@ Feature: Automatic enrollment key creation
     And I log in as "admin"
     And I am on site homepage
 
-@javascript
+  @javascript
   Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
     Given the "Self enrolment" enrolment plugin is enabled
     And I am on the "Course 001" "Enrolled users" page
@@ -27,7 +27,7 @@ Feature: Automatic enrollment key creation
     And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
     Then the field "Enrolment key" should not be empty
 
-@javascript
+  @javascript
   Scenario: Self enrollment method should not get an enrollment key when plugin is disabled
     Given the "Self enrolment" enrolment plugin is enabled
     And I am on the "Course 001" "Enrolled users" page

@@ -20,8 +20,6 @@ Feature: Automatic enrollment key creation
   @javascript
   Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
     Given I log in as "admin"
-    And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
-    And I click on "Enable" "link" in the "Self enrolment" "table_row"
     And I am on the "Course 1" "Enrolled users" page
     And I follow "Enrolment methods"
     And I add "Self enrolment" enrolment method with:

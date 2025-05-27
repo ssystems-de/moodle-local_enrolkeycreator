@@ -21,7 +21,6 @@ Feature: Automatic enrollment key creation
   Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
     Given enrollment key creator is "enabled"
     And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
-    And I click on "Enable" "link" in the "Self enrolment" "table_row"
     And I am on "Course 1" course homepage
     And I navigate to "Users > Enrolment methods" in current page administration
     And I add "Self enrolment" enrolment method with:
@@ -32,7 +31,7 @@ Feature: Automatic enrollment key creation
   Scenario: Self enrollment method should not get an enrollment key when plugin is disabled
     Given enrollment key creator is "disabled"
     And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
-    And I click on "Enable" "link" in the "Self enrolment" "table_row"
+    And I click on "Disable" "link" in the "Self enrolment" "table_row"
     And I am on "Course 1" course homepage
     And I navigate to "Users > Enrolment methods" in current page administration
     And I add "Self enrolment" enrolment method with:

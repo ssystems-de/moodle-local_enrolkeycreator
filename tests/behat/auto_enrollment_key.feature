@@ -23,3 +23,14 @@ Feature: Automatic enrollment key creation
     And I am on the "Course 1" "enrolment methods" page
     And I click on "Edit" "link" in the "Self enrolment (Student)" "table_row"
     Then the field "Enrolment key" does not match value ""
+
+  @javascript
+  Scenario: Self enrollment method should not get an enrollment key when plugin is disabled
+    Given I log in as "admin"
+    And I navigate to "Plugins > Enrollment key creator settings" in site administration
+    And I set the following fields to these values:
+      | Enable automatic enrollment key creation | Yes |
+    And I press "Save changes"
+    And I am on the "Course 1" "enrolment methods" page
+    And I click on "Edit" "link" in the "Self enrolment (Student)" "table_row"
+    Then the field "Enrolment key" matches value ""

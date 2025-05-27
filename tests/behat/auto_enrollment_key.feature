@@ -31,7 +31,7 @@ Feature: Automatic enrollment key creation
     And I set the following fields to these values:
       | Enable automatic enrollment key creation | No |
     And I press "Save changes"
-      And I navigate to "Courses > Add a new course" in site administration
+    And I navigate to "Courses > Add a new course" in site administration
     And I set the following fields to these values:
       | Course full name  | Course 2             |
       | Course short name | C2                   |

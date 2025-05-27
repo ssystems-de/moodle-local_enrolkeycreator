@@ -35,7 +35,7 @@ Feature: Automatic enrollment key creation
     And I set the following fields to these values:
       | Course full name  | Course 2             |
       | Course short name | C2                   |
-      | Course category   | Miscellaneous        |
+      | Course category   | Category 1           |
       | Course format     | Topics format        |
     And I press "Save and display"
     And I am on the "Course 2" "enrolment methods" page

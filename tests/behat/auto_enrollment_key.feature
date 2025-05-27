@@ -18,22 +18,22 @@ Feature: Automatic enrollment key creation
     And I am on site homepage
 
 @javascript
-Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
-  Given the "Self enrolment" enrolment plugin is enabled
-  And I am on the "Course 001" "Enrolled users" page
-  And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
-  And I add "Self enrolment" enrolment method with:
-    | Custom instance name | Test self enrollment |
-  And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
-  Then the field "Enrolment key" should not be empty
+  Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
+    Given the "Self enrolment" enrolment plugin is enabled
+    And I am on the "Course 001" "Enrolled users" page
+    And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
+    And I add "Self enrolment" enrolment method with:
+      | Custom instance name | Test self enrollment |
+    And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
+    Then the field "Enrolment key" should not be empty
 
 @javascript
-Scenario: Self enrollment method should not get an enrollment key when plugin is disabled
-  Given the "Self enrolment" enrolment plugin is enabled
-  And I am on the "Course 001" "Enrolled users" page
-  And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
-  And I add "Self enrolment" enrolment method with:
-    | Custom instance name | Test self enrollment |
-    | Enrolment key        |                      |
-  And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
-  Then the field "Enrolment key" should be empty
+  Scenario: Self enrollment method should not get an enrollment key when plugin is disabled
+    Given the "Self enrolment" enrolment plugin is enabled
+    And I am on the "Course 001" "Enrolled users" page
+    And I select "Enrolment methods" from the "Participants tertiary navigation" action menu
+    And I add "Self enrolment" enrolment method with:
+      | Custom instance name | Test self enrollment |
+      | Enrolment key        |                      |
+    And I click on "Edit" "link" in the "Self enrolment (Test self enrollment)" "table_row"
+    Then the field "Enrolment key" should be empty

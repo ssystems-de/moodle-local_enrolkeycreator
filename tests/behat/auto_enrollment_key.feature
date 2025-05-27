@@ -21,7 +21,7 @@ Feature: Automatic enrollment key creation
   Scenario: Self enrollment method should automatically get an enrollment key when plugin is enabled
     Given I log in as "admin"
     And I am on the "Course 1" "enrolment methods" page
-    And I click on "Edit" "icon" in the "Self enrolment (Student)" "table_row"
+    And I click on "Edit" "link" in the "Self enrolment (Student)" "table_row"
     Then the field "Enrolment key" does not match value ""
 
   @javascript

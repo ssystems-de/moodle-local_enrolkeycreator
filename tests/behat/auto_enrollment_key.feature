@@ -29,7 +29,7 @@ Feature: Automatic enrollment key creation
     Given I log in as "admin"
     And I navigate to "Plugins > Enrollment key creator settings" in site administration
     And I set the following fields to these values:
-      | Enable automatic enrollment key creation | No |
+      | Enable automatic enrollment key creation | |
     And I press "Save changes"
     And I navigate to "Courses > Add a new course" in site administration
     And I set the following fields to these values:

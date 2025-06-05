@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information
+ * Event observers for local_enrolkeycreator.
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
@@ -24,9 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2024100700;
-$plugin->requires  = 2024100700;
-$plugin->component = 'local_enrolkeycreator';
-$plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v4.5-r1';
-$plugin->supported = [405, 405];
+$observers = [
+    [
+        'eventname'   => '\core\event\enrol_instance_created',
+        'callback'    => '\local_enrolkeycreator\observer\observer::enrol_instance_created',
+    ],
+];

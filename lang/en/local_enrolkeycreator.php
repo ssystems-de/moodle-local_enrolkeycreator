@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information
+ * Language strings for local_enrolkeycreator
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
@@ -24,9 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2024100700;
-$plugin->requires  = 2024100700;
-$plugin->component = 'local_enrolkeycreator';
-$plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v4.5-r1';
-$plugin->supported = [405, 405];
+$string['enabled'] = 'Enable automatic enrollment key creation';
+$string['enabled_desc'] = 'When enabled, the plugin will automatically generate and set an enrollment key when a new self-enrollment instance is created. Note: This setting has no effect if the Moodle core setting "enrol_self | requirepassword" is enabled, as Moodle core will already handle password generation in that case.';
+$string['pluginname'] = 'Automatic enrollment key creator';
+$string['pluginsettings'] = 'Enrollment key creator settings';

@@ -22,7 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-
 namespace local_enrolkeycreator\observer;
 
 /**
@@ -61,7 +60,8 @@ class observer {
         }
 
         // Check if requirepassword setting is enabled in Moodle.
-        if (!empty($CFG->enrol_self_requirepassword)) {
+        $requirepassword = get_config('enrol_self', 'requirepassword');
+        if ($requirepassword) {
             // If requirepassword is enabled, a password has already been set by core.
             return true;
         }

@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information
+ * Plugin administration settings.
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
@@ -24,9 +24,18 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2024100700;
-$plugin->requires  = 2024100700;
-$plugin->component = 'local_enrolkeycreator';
-$plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v4.5-r1';
-$plugin->supported = [405, 405];
+if ($hassiteconfig) {
+    // Create the new settings page.
+    $settings = new admin_settingpage('local_enrolkeycreator_settings',
+            new lang_string('pluginsettings', 'local_enrolkeycreator'));
+
+    // Add the settings page to the Plugins > Local plugins menu.
+    $ADMIN->add('localplugins', $settings);
+
+    // Add the enable/disable setting (kill switch).
+    $name = 'local_enrolkeycreator/enabled';
+    $title = new lang_string('enabled', 'local_enrolkeycreator');
+    $description = new lang_string('enabled_desc', 'local_enrolkeycreator');
+    $default = 0;
+    $settings->add(new admin_setting_configcheckbox($name, $title, $description, $default));
+}

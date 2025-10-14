@@ -1,11 +1,11 @@
 @local @local_enrolkeycreator
-Feature: Automatic enrollment key creation
-  In order to secure course enrollment
+Feature: Automatic enrolment key creation
+  In order to secure course enrolment
   As a teacher or administrator
-  I need automatic enrollment key creation for self enrollment methods
+  I need automatic enrolment key creation for self enrolment methods
 
   @javascript
-  Scenario Outline: Self enrollment method should (not) get an enrollment key
+  Scenario Outline: Self enrolment method should (not) get an enrolment key
     Given the following config values are set as admin:
       | enabled         | <pluginsetting> | local_enrolkeycreator |
       | requirepassword | <coresetting>   | enrol_self            |

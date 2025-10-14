@@ -2,3 +2,6 @@ include:
   - project: 'ssystems/ci_templates'
     ref: master
     file: '/moodle-plugin-ci/.gitlab-ci_template.yml'
+  - project: 'ssystems/ci_templates'
+    ref: master
+    file: '/gitlab-github-mirror/.gitlab-ci_template.yml'

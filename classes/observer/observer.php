@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Event observer for enrolment events.
+ * Local plugin 'Enrolkey creator' - Event observer for enrolment events.
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
@@ -25,14 +25,13 @@
 namespace local_enrolkeycreator\observer;
 
 /**
- * Event observer class for enrolment events
+ * Event observer class for enrolment events.
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class observer {
-
     /**
      * Observer for enrol_instance_created event
      *
@@ -41,6 +40,7 @@ class observer {
      */
     public static function enrol_instance_created($event) {
         global $DB, $CFG;
+
         require_once($CFG->dirroot . '/enrol/locallib.php');
         require_once($CFG->dirroot . '/lib/enrollib.php');
 
@@ -55,7 +55,7 @@ class observer {
         $enrol = $DB->get_record('enrol', ['id' => $enrolid]);
 
         if (!$enrol || $enrol->enrol !== 'self') {
-            // We only process self-enrollment instances.
+            // We only process self-enrolment instances.
             return true;
         }
 

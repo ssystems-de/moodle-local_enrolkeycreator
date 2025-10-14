@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin administration settings.
+ * Local plugin 'Enrolkey creator' - Settings.
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
@@ -26,8 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 if ($hassiteconfig) {
     // Create the new settings page.
-    $settings = new admin_settingpage('local_enrolkeycreator_settings',
-            new lang_string('pluginsettings', 'local_enrolkeycreator'));
+    $settings = new admin_settingpage('local_enrolkeycreator_settings', new lang_string('pluginname', 'local_enrolkeycreator'));
 
     // Add the settings page to the Plugins > Local plugins menu.
     $ADMIN->add('localplugins', $settings);

@@ -4,7 +4,7 @@ moodle-local_enrolkeycreator
 Changes
 -------
 
-### Unreleased
+### v4.5-r2
 
 * 2025-10-14 - Release: Prepare codebase for release on moodle.org/plugins
 

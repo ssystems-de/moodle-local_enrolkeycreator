@@ -15,18 +15,30 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Local plugin 'Enrolkey creator' - Version file.
+ * Local plugin 'Enrolkey creator' - Privacy provider.
  *
  * @package    local_enrolkeycreator
  * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace local_guestredirect\privacy;
 
-$plugin->component = 'local_enrolkeycreator';
-$plugin->version = 2024100700;
-$plugin->release = 'v4.5-r1';
-$plugin->requires = 2024100700;
-$plugin->supported = [405, 405];
-$plugin->maturity = MATURITY_STABLE;
+/**
+ * Local plugin 'Enrolkey creator' - Privacy provider.
+ *
+ * @package    local_enrolkeycreator
+ * @copyright  2025 Andreas Rosenthal, ssystems GmbH <arosenthal@ssystems.de>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return string
+     */
+    public static function get_reason(): string {
+        return 'privacy:metadata';
+    }
+}

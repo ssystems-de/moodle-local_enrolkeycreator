@@ -1,7 +1,7 @@
 moodle-local_enrolkeycreator
 ============================
 
-[![Moodle Plugin CI](https://github.com/ssystems-de/moodle-local_enrolkeycreator/actions/workflows/moodle-plugin-ci.yml/badge.svg?branch=main)](https://github.com/ssystems-de/moodle-local_enrolkeycreator/actions?query=workflow%3A%22Moodle+Plugin+CI%22+branch%3Amain)
+[![Moodle Plugin CI](https://github.com/ssystems-de/moodle-local_enrolkeycreator/actions/workflows/moodle-plugin-ci.yml/badge.svg?branch=MOODLE_405_STABLE)](https://github.com/ssystems-de/moodle-local_enrolkeycreator/actions?query=workflow%3A%22Moodle+Plugin+CI%22+branch%3AMOODLE_405_STABLE)
 
 Moodle plugin which will automatically generate and set an enrolment key when a new self-enrolment instance is created without preventing enrolment keys from being removed again.
 

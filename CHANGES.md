@@ -4,6 +4,11 @@ moodle-local_enrolkeycreator
 Changes
 -------
 
+### Unreleased
+
+* 2026-09-14 - Update CI integration.
+               Please note: Due to this change, the Git history of the plugin has to be rewritten in Github. Existing Git tags will not be changed. If you deploy directly from Github, you should be aware of that one-time hickup.
+
 ### v4.5-r2
 
 * 2025-10-14 - Release: Prepare codebase for release on moodle.org/plugins

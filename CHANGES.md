@@ -4,6 +4,10 @@ moodle-local_enrolkeycreator
 Changes
 -------
 
+### Unreleased
+
+* 2026-09-24 - Prepare compatibility for Moodle 5.0.
+
 ### v4.5-r3
 
 * 2026-09-14 - Update CI integration.

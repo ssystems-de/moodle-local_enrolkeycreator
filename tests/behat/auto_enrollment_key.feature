@@ -17,7 +17,7 @@ Feature: Automatic enrolment key creation
       | Course category   | Category 1 |
     And I press "Save and display"
     And I am on the "Course 1" "enrolment methods" page
-    And I click on "Edit" "link" in the "Self enrolment (Student)" "table_row"
+    And I click on "Edit" "link" in the "Self enrolment as 'Student'" "table_row"
     Then the field "Enrolment key" <matchornot> value ""
 
     Examples:

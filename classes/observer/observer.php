@@ -78,7 +78,7 @@ class observer {
             return true;
         }
 
-        $enrolkey = generate_password();
+        $enrolkey = \core\di::get(\core\authentication\password::class)->generate();
         $enrol->password = $enrolkey;
         $DB->update_record('enrol', $enrol);
 

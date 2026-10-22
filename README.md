@@ -9,7 +9,7 @@ Moodle plugin which will automatically generate and set an enrolment key when a 
 Requirements
 ------------
 
-This plugin requires Moodle 5.2+
+This plugin requires Moodle 5.3+
 
 
 Motivation for this plugin

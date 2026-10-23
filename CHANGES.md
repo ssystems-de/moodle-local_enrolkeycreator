@@ -4,7 +4,7 @@ moodle-local_enrolkeycreator
 Changes
 -------
 
-### Unreleased
+### v5.3-r1
 
 * 2026-10-22 - Upgrade: Adopt changes from MDL-88580 and use new \core\authentication\password class.
 * 2026-10-05 - Prepare compatibility for Moodle 5.3.

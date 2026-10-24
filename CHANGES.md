@@ -4,6 +4,10 @@ moodle-local_enrolkeycreator
 Changes
 -------
 
+### Unreleased
+
+* 2026-10-24 - Bugfix: Fix namespace of the privacy provider, so that the plugin's null provider is detected properly.
+
 ### v5.3-r1
 
 * 2026-10-22 - Upgrade: Adopt changes from MDL-88580 and use new \core\authentication\password class.

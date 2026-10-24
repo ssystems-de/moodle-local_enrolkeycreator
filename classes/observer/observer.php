@@ -39,10 +39,7 @@ class observer {
      * @return bool Always true
      */
     public static function enrol_instance_created($event) {
-        global $DB, $CFG;
-
-        require_once($CFG->dirroot . '/enrol/locallib.php');
-        require_once($CFG->dirroot . '/lib/enrollib.php');
+        global $DB;
 
         // Check if the plugin is enabled in settings.
         $enabled = get_config('local_enrolkeycreator', 'enabled');

@@ -6,6 +6,7 @@ Changes
 
 ### Unreleased
 
+* 2026-10-24 - Documentation: Fix the namespace of the observed event in the README.
 * 2026-10-24 - Improvement: Generate the enrolment key with the same length as core's self-enrolment plugin.
 * 2026-10-24 - Cleanup: Remove unneeded includes from the event observer.
 * 2026-10-24 - Improvement: Trigger the enrol_instance_updated event and update the modification time when the enrolment key is set.

@@ -61,7 +61,7 @@ This plugin does not add any additional scheduled tasks.
 How this plugin works
 ---------------------
 
-This plugin uses Moodle's event system to automatically generate enrolment keys for self-enrolment instances. It registers an event observer for the `\core\enrol\enrol_instance_created` event and whenever a new enrolment instance is created in any course, the plugin's observer method is triggered.
+This plugin uses Moodle's event system to automatically generate enrolment keys for self-enrolment instances. It registers an event observer for the `\core\event\enrol_instance_created` event and whenever a new enrolment instance is created in any course, the plugin's observer method is triggered.
 
 When the event is triggered, the plugin performs the following checks and actions:
 

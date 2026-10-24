@@ -6,6 +6,7 @@ Changes
 
 ### Unreleased
 
+* 2026-10-24 - Improvement: Trigger the enrol_instance_updated event and update the modification time when the enrolment key is set.
 * 2026-10-24 - Bugfix: Fix namespace of the privacy provider, so that the plugin's null provider is detected properly.
 
 ### v5.3-r1

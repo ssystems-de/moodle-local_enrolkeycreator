@@ -78,7 +78,8 @@ class observer {
         // Write the key directly instead of using enrol_self_plugin::update_instance() as that method expects
         // the data of the instance edit form and would otherwise mangle other instance settings.
         // But mimic it by updating the modification time and triggering the update event.
-        $enrolkey = generate_password();
+        // Use the same key length as enrol_self_plugin::add_default_instance().
+        $enrolkey = generate_password(20);
         $enrol->password = $enrolkey;
         $enrol->timemodified = time();
         $DB->update_record('enrol', $enrol);

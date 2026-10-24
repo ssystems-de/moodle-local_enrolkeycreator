@@ -78,9 +78,14 @@ class observer {
             return true;
         }
 
+        // Write the key directly instead of using enrol_self_plugin::update_instance() as that method expects
+        // the data of the instance edit form and would otherwise mangle other instance settings.
+        // But mimic it by updating the modification time and triggering the update event.
         $enrolkey = \core\di::get(\core\authentication\password::class)->generate();
         $enrol->password = $enrolkey;
+        $enrol->timemodified = time();
         $DB->update_record('enrol', $enrol);
+        \core\event\enrol_instance_updated::create_from_record($enrol)->trigger();
 
         return true;
     }

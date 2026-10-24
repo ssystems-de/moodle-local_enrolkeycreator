@@ -26,3 +26,27 @@ Feature: Automatic enrolment key creation
       | 0           | 1             | does not match |
       | 1           | 0             | does not match |
       | 1           | 1             | does not match |
+
+  @javascript
+  Scenario Outline: Setting the enrolment key should (not) trigger the enrolment instance updated event
+    Given the following config values are set as admin:
+      | enabled         | <pluginsetting> | local_enrolkeycreator |
+      | requirepassword | 0               | enrol_self            |
+    # The course is created via the UI and not with a data generator as the events which are triggered by a data
+    # generator are kept in the log store buffer of the Behat process and would not be written to the log table in time.
+    When I log in as "admin"
+    And I navigate to "Courses > Add a new course" in site administration
+    And I set the following fields to these values:
+      | Course full name  | Course 1   |
+      | Course short name | C1         |
+      | Course category   | Category 1 |
+    And I press "Save and display"
+    And I am on the "Course 1" "report_log > Logs" page
+    And I press "Get these logs"
+    Then I should see "Enrolment instance created"
+    And I <seeornot> "Enrolment instance updated"
+
+    Examples:
+      | pluginsetting | seeornot         |
+      | 0             | should not see   |
+      | 1             | should see       |

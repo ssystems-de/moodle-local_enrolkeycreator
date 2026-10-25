@@ -4,7 +4,7 @@ moodle-local_enrolkeycreator
 Changes
 -------
 
-### Unreleased
+### v5.3-r2
 
 * 2026-10-24 - Documentation: Fix the namespace of the observed event in the README.
 * 2026-10-24 - Improvement: Generate the enrolment key with the same length as core's self-enrolment plugin.

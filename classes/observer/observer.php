@@ -68,12 +68,9 @@ class observer {
             return true;
         }
 
-        $courseid = $enrol->courseid;
-        $course = $DB->get_record('course', ['id' => $courseid]);
-
-        if (!$course) {
-            return true;
-        }
+        // There is no need to check if the course itself exists.
+        // Core triggers this event right after the instance was added to an existing course and the event creation
+        // itself would already fail with a missing course as it fetches the course context with MUST_EXIST.
 
         // Write the key directly instead of using enrol_self_plugin::update_instance() as that method expects
         // the data of the instance edit form and would otherwise mangle other instance settings.

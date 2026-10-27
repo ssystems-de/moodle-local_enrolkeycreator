@@ -4,6 +4,10 @@ moodle-local_enrolkeycreator
 Changes
 -------
 
+### Unreleased
+
+* 2026-10-27 - Cleanup: Remove the redundant course record lookup from the event observer.
+
 ### v5.2-r2
 
 * 2026-10-24 - Documentation: Fix the namespace of the observed event in the README.
